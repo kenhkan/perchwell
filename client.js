@@ -36,9 +36,16 @@
     for (i = 0, l = coords.length; i < l; i++) {
       c = coords[i];
       // Coordinates as tuples
-      points.push([c.k, c.D]);
+      points.push({ x: c.k, y: c.D});
     }
 
-    console.log("polygon", points);
+    $.ajax({
+      method: "POST",
+      url: "/find-listings",
+      dataType: "json",
+      data: {
+        points: points
+      }
+    });
   });
 })();

@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "body-parser": "^1.12.3",
+    "express": "^4.12.3",
+    "turf": "^2.0.2",
+    "turf-inside": "^1.1.4"
+  }
+}
