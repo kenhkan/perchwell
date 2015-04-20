@@ -35,7 +35,6 @@
 
     for (i = 0, l = coords.length; i < l; i++) {
       c = coords[i];
-      // Coordinates as tuples
       points.push({ x: c.k, y: c.D});
     }
 
@@ -46,6 +45,25 @@
       data: {
         points: points
       }
+    }).done(function (data) {
+      showAddresses(data);
     });
   });
+
+  function showAddresses(records) {
+    var i, l, record, recordDom;
+    var outputDom = document.getElementById("listing");
+    var frag = document.createDocumentFragment();
+
+    for (i = 0, l = records.length; i < l; i++) {
+      record = records[i];
+      recordDom = document.createElement("div");
+      // I know it's bad style, but this is only for prototyping.
+      recordDom.innerHTML = "<div><b>" + record.id + "</b> " + record.address + "</div>";
+      frag.appendChild(recordDom);
+    }
+
+    outputDom.innerHTML = "";
+    outputDom.appendChild(frag);
+  }
 })();
